@@ -3,7 +3,6 @@ package com.example.demo.adapters.outbound.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.UUID;
 
 @Table(name = "client")
@@ -13,6 +12,7 @@ public class JpaClientEntity {
     @Column(name = "id", nullable = false)
     @GeneratedValue
     private UUID id;
+    @Column(name = "cpf", nullable = false, unique = true)
     private String cpf;
     private String name;
     private LocalDate dateOfBirth;

@@ -3,8 +3,8 @@ package com.example.demo.adapters.outbound.rest;
 import com.example.demo.application.core.locales.Cep;
 import com.example.demo.application.core.locales.State;
 import com.example.demo.application.ports.out.SearchLocalesPort;
-import com.example.demo.utils.CepMapper;
-import com.example.demo.utils.StateMapper;
+import com.example.demo.utils.mappers.CepMapper;
+import com.example.demo.utils.mappers.StateMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -4,7 +4,7 @@ import com.example.demo.adapters.inbound.request.ClientRequestDTO;
 import com.example.demo.adapters.outbound.entities.JpaClientEntity;
 import com.example.demo.application.core.client.Client;
 import com.example.demo.application.ports.out.ClientRepositoryPort;
-import com.example.demo.utils.ClientMapper;
+import com.example.demo.utils.mappers.ClientMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

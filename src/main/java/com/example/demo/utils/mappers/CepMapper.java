@@ -1,4 +1,4 @@
-package com.example.demo.utils;
+package com.example.demo.utils.mappers;
 
 import com.example.demo.adapters.outbound.dto.CepResponseDTO;
 import com.example.demo.application.core.locales.Cep;

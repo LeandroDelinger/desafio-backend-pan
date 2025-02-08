@@ -1,4 +1,4 @@
-package com.example.demo.utils;
+package com.example.demo.utils.mappers;
 
 import com.example.demo.adapters.inbound.request.ClientRequestDTO;
 import com.example.demo.adapters.outbound.entities.JpaClientEntity;

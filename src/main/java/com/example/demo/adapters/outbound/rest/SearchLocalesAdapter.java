@@ -3,7 +3,6 @@ package com.example.demo.adapters.outbound.rest;
 import com.example.demo.application.core.locales.Cep;
 import com.example.demo.application.core.locales.Municipality;
 import com.example.demo.application.core.locales.State;
-import com.example.demo.application.core.service.LocaleServiceImpl;
 import com.example.demo.application.ports.out.SearchLocalesPort;
 import com.example.demo.utils.mappers.CepMapper;
 import com.example.demo.utils.mappers.MunicipalityMapper;

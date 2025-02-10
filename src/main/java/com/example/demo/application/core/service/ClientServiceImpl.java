@@ -2,7 +2,7 @@ package com.example.demo.application.core.service;
 
 import com.example.demo.adapters.inbound.request.AddressRequestDTO;
 import com.example.demo.adapters.inbound.request.ClientRequestDTO;
-import com.example.demo.application.core.Address.Address;
+import com.example.demo.application.core.address.Address;
 import com.example.demo.application.core.client.Client;
 import com.example.demo.application.exceptions.ClientAlreadyExistsException;
 import com.example.demo.application.exceptions.ClientNotFoundException;

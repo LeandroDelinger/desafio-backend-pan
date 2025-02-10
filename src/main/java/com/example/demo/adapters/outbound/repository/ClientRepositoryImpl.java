@@ -1,9 +1,7 @@
 package com.example.demo.adapters.outbound.repository;
 
-import com.example.demo.adapters.inbound.ClientController;
 import com.example.demo.adapters.inbound.request.ClientRequestDTO;
 import com.example.demo.adapters.outbound.entities.JpaClientEntity;
-import com.example.demo.application.core.Address.Address;
 import com.example.demo.application.core.client.Client;
 import com.example.demo.application.ports.out.ClientRepositoryPort;
 import com.example.demo.utils.mappers.ClientMapper;

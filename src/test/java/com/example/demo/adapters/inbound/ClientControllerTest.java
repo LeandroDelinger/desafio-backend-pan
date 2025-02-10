@@ -34,7 +34,7 @@ class ClientControllerTest {
     private MockMvc mockMvc;
 
     @InjectMocks
-    private ClientController clientController;  // Controller que você está testando
+    private ClientController clientController;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -43,7 +43,6 @@ class ClientControllerTest {
     void setUp() {
         mockMvc = MockMvcBuilders.standaloneSetup(clientController).build();
     }
-
 
     @Test
     public void shouldReceiveRequestAndCreateNewClient() throws Exception {

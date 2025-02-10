@@ -1,6 +1,7 @@
 package com.example.demo.utils.mappers;
 
 import com.example.demo.adapters.inbound.request.ClientRequestDTO;
+import com.example.demo.adapters.inbound.response.ClientResponseDTO;
 import com.example.demo.adapters.outbound.entities.JpaClientEntity;
 import com.example.demo.application.core.client.Client;
 import com.example.demo.mocks.ClientMockFactory;
@@ -54,6 +55,17 @@ class ClientMapperTest {
         assertNotNull(entity);
         assertEquals(dto.getName(), entity.getName());
         assertEquals(dto.getAddress().getCep(), entity.getAddress().getCep());
+    }
+
+    @Test
+    void shouldMapClientToClientResponseDTO() {
+        Client client = ClientMockFactory.createClient();
+
+        ClientResponseDTO dto = clientMapper.toResponseDTO(client);
+
+        assertNotNull(dto);
+        assertEquals(client.getName(), dto.getName());
+        assertEquals(client.getAddress().getStreet(), dto.getAddress().getStreet());
     }
 
 }

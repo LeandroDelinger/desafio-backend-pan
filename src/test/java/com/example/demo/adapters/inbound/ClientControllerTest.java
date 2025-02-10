@@ -5,6 +5,7 @@ import com.example.demo.adapters.inbound.request.ClientRequestDTO;
 import com.example.demo.application.core.client.Client;
 import com.example.demo.application.ports.in.ClientServicePort;
 import com.example.demo.mocks.ClientMockFactory;
+import com.example.demo.utils.mappers.ClientMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,6 +30,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ClientControllerTest {
     @Mock
     private ClientServicePort clientService;
+
+    @Mock
+    private ClientMapper clientMapper;
 
     @Autowired
     private MockMvc mockMvc;

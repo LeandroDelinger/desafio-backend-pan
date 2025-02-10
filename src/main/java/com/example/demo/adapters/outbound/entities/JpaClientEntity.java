@@ -1,5 +1,6 @@
 package com.example.demo.adapters.outbound.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -15,6 +16,7 @@ public class JpaClientEntity {
     @Column(name = "cpf", nullable = false, unique = true)
     private String cpf;
     private String name;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")

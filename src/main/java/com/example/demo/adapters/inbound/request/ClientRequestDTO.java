@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @ToString
 public class ClientRequestDTO {
     @NotBlank(message = "Name is required")
+    @Size(min=2, message = "Name must have at least 2 characters")
     private String name;
     @NotBlank(message = "CPF is required")
     @Size(min = 11, max = 11, message = "CPF must have 11 characters")

@@ -36,4 +36,13 @@ public class Municipality {
     public void setRegion(String region) {
         this.region = region;
     }
+
+    @Override
+    public String toString() {
+        return "Municipality{" +
+                "name='" + name + '\'' +
+                ", state='" + state + '\'' +
+                ", region='" + region + '\'' +
+                '}';
+    }
 }

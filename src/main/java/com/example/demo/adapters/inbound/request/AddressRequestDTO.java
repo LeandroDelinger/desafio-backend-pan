@@ -5,9 +5,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class AddressRequestDTO {
     @NotBlank(message = "CEP is required")
     @Size(min = 8, max = 8, message = "CEP must have 8 characters")

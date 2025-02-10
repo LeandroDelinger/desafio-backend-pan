@@ -97,5 +97,20 @@ public class Cep {
     public void setRegion(String region) {
         this.region = region;
     }
+
+    @Override
+    public String toString() {
+        return "Cep{" +
+                "cep='" + cep + '\'' +
+                ", patio='" + patio + '\'' +
+                ", complement='" + complement + '\'' +
+                ", unit='" + unit + '\'' +
+                ", neighborhood='" + neighborhood + '\'' +
+                ", locale='" + locale + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", region='" + region + '\'' +
+                '}';
+    }
 }
 

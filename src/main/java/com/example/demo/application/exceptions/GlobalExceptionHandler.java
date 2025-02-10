@@ -2,6 +2,8 @@ package com.example.demo.application.exceptions;
 
 import com.example.demo.application.exceptions.dto.ErrorResponseDTO;
 import jakarta.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -9,11 +11,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpClientErrorException;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(HttpClientErrorException.BadRequest.class)
     public ResponseEntity<ErrorResponseDTO> handleBadRequest(HttpClientErrorException.BadRequest ex, HttpServletRequest request) {
@@ -23,6 +27,9 @@ public class GlobalExceptionHandler {
                 ex.getMessage(),
                 request.getRequestURI()
         );
+
+        log.error("Error: {} | Path: {} | Status: {} | Timestamp: {}",
+                ex.getMessage(), request.getRequestURI(), HttpStatus.BAD_REQUEST.value(), LocalDateTime.now());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
@@ -35,6 +42,9 @@ public class GlobalExceptionHandler {
                 request.getRequestURI()
         );
 
+
+        log.warn("Client Not Found: {} | Path: {} | Status: {} | Timestamp: {}",
+                ex.getMessage(), request.getRequestURI(), HttpStatus.NOT_FOUND.value(), LocalDateTime.now());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
@@ -47,6 +57,8 @@ public class GlobalExceptionHandler {
                 request.getRequestURI()
         );
 
+        log.warn("CEP Not Found: {} | Path: {} | Status: {} | Timestamp: {}",
+                ex.getMessage(), request.getRequestURI(), HttpStatus.NOT_FOUND.value(), LocalDateTime.now());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
@@ -59,16 +71,21 @@ public class GlobalExceptionHandler {
                 request.getRequestURI()
         );
 
+        log.warn("Client Already Exists: {} | Path: {} | Status: {} | Timestamp: {}",
+                ex.getMessage(), request.getRequestURI(), HttpStatus.BAD_REQUEST.value(), LocalDateTime.now());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> handleValidationErrors(MethodArgumentNotValidException ex) {
+    public Map<String, String> handleValidationErrors(MethodArgumentNotValidException ex, HttpServletRequest request) {
         Map<String, String> errors = new HashMap<>();
 
         ex.getBindingResult().getFieldErrors().forEach(error ->
                 errors.put(error.getField(), error.getDefaultMessage())
         );
+
+        log.error("Validation Error: {} | Path: {} | Status: {} | Timestamp: {}",
+                errors, request.getRequestURI(), HttpStatus.BAD_REQUEST.value(), LocalDateTime.now());
 
         return errors;
     }
@@ -82,6 +99,8 @@ public class GlobalExceptionHandler {
                 request.getRequestURI()
         );
 
+        log.error("Unexpected Error: {} | Path: {} | Status: {} | Timestamp: {}",
+                ex.getMessage(), request.getRequestURI(), HttpStatus.INTERNAL_SERVER_ERROR.value(), LocalDateTime.now(), ex);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
     }
 }

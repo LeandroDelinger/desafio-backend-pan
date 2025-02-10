@@ -76,4 +76,17 @@ public class Address {
     public void setMunicipality(String municipality) {
         this.municipality = municipality;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "cep='" + cep + '\'' +
+                ", street='" + street + '\'' +
+                ", number='" + number + '\'' +
+                ", complement='" + complement + '\'' +
+                ", municipality='" + municipality + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                '}';
+    }
 }

@@ -39,7 +39,7 @@ paths:
               $ref: "#/components/schemas/ClientRequestDTO"
         required: true
       responses:
-        "200":
+        "201":
           description: OK
           content:
             '*/*':

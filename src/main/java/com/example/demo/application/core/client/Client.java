@@ -1,6 +1,7 @@
 package com.example.demo.application.core.client;
 
-import com.example.demo.application.core.adress.Adress;
+import com.example.demo.application.core.address.Address;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -10,16 +11,16 @@ public class Client {
     private String cpf;
     private String name;
     private LocalDate dateOfBirth;
-    private Adress adress;
+    private Address address;
 
     public Client() {}
 
-    public Client(UUID id, String cpf, String name, LocalDate dateOfBirth, Adress adress) {
+    public Client(UUID id, String cpf, String name, LocalDate dateOfBirth, Address address) {
         this.id = id;
         this.cpf = cpf;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
-        this.adress = adress;
+        this.address = address;
     }
 
 
@@ -55,11 +56,22 @@ public class Client {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Adress getAdress() {
-        return adress;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAdress(Adress adress) {
-        this.adress = adress;
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", cpf='" + cpf + '\'' +
+                ", name='" + name + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", address=" + address +
+                '}';
     }
 }

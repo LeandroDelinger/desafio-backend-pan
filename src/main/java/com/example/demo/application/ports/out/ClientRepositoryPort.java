@@ -9,6 +9,6 @@ import java.util.UUID;
 public interface ClientRepositoryPort {
     Optional<Client> findById(UUID id);
     Optional<Client> findByCPF(String cpf);
-
     Client save(ClientRequestDTO client);
+    void updateAddress(Client client);
 }

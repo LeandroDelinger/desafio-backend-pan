@@ -1,5 +1,6 @@
 package com.example.demo.adapters.outbound.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -15,10 +16,11 @@ public class JpaClientEntity {
     @Column(name = "cpf", nullable = false, unique = true)
     private String cpf;
     private String name;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "adress_id")
-    private JpaAdressEntity adress;
+    @JoinColumn(name = "address_id")
+    private JpaAddressEntity address;
 
     public UUID getId() {
         return id;
@@ -52,11 +54,11 @@ public class JpaClientEntity {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public JpaAdressEntity getAdress() {
-        return adress;
+    public JpaAddressEntity getAddress() {
+        return address;
     }
 
-    public void setAdress(JpaAdressEntity adress) {
-        this.adress = adress;
+    public void setAddress(JpaAddressEntity address) {
+        this.address = address;
     }
 }

@@ -8,6 +8,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface JpaClientRepository extends JpaRepository<JpaClientEntity, UUID> {
-    @Query("SELECT c FROM JpaClientEntity c LEFT JOIN FETCH c.adress WHERE c.cpf = :cpf")
+    @Query("SELECT c FROM JpaClientEntity c LEFT JOIN FETCH c.address WHERE c.cpf = :cpf")
     Optional<JpaClientEntity> findByCPF(String cpf);
 }

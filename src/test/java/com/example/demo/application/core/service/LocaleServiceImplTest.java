@@ -7,11 +7,13 @@ import com.example.demo.application.exceptions.CepNotFoundException;
 import com.example.demo.application.ports.out.SearchLocalesPort;
 import com.example.demo.mocks.LocalesMockFactory;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,16 +61,23 @@ class LocaleServiceImplTest {
 
     @Test
     void shouldReturnStates() {
-        State state = LocalesMockFactory.createState();
-        List<State> expectedStates = List.of(state);
+        State sp = new State(35, "SP", "São Paulo");
+        State rj = new State(20, "RJ", "Rio de Janeiro");
+        State go = new State(1, "GO", "Goiania");
+        State rs = new State(5, "RS", "Rio Grande do Sul");
+        List<State> expectedStates = new ArrayList<>();
+        expectedStates.add(go);
+        expectedStates.add(sp);
+        expectedStates.add(rs);
+        expectedStates.add(rj);
 
         when(searchLocalesPort.getStates()).thenReturn(expectedStates);
 
         List<State> actualStates = localeServiceImpl.getStates();
 
         assertNotNull(actualStates);
-        assertEquals(expectedStates, actualStates);
-
+        assertEquals(sp, actualStates.get(0));
+        assertEquals(rj, actualStates.get(1));
         verify(searchLocalesPort, times(1)).getStates();
     }
 
@@ -87,4 +96,5 @@ class LocaleServiceImplTest {
 
         verify(searchLocalesPort, times(1)).getMunicipalitiesByStateID(stateId);
     }
+
 }

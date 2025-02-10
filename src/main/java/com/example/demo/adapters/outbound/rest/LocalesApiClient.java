@@ -19,13 +19,13 @@ public class LocalesApiClient {
     private static final Logger log = LoggerFactory.getLogger(LocalesApiClient.class);
 
     @Value("${api.viacep.url}")
-    private String viaCepUrl;
+    public String viaCepUrl;
 
     @Value("${api.ibge.states.url}")
-    private String ibgeStatesUrl;
+    public String ibgeStatesUrl;
 
     @Value("${api.ibge.municipalities.url}")
-    private String ibgeMunicipalitiesUrl;
+    public String ibgeMunicipalitiesUrl;
 
     @Autowired
     public LocalesApiClient(RestTemplate restTemplate) {

@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -36,7 +38,7 @@ public class LocaleServiceImpl implements LocaleServicePort {
         log.info("executing get all states");
         List<State> states = searchLocalesPort.getStates();
         log.info("states found: {}", states.size());
-        return states;
+        return states.size() > 1 ? sortStatesAndPositionSPandRJ(states) : states;
     }
 
     @Override
@@ -53,5 +55,18 @@ public class LocaleServiceImpl implements LocaleServicePort {
             log.warn("Invalid CEP: {}", cep);
         }
         return valid;
+    }
+
+    private List<State> sortStatesAndPositionSPandRJ(List<State> states) {
+        ArrayList<State> list = new ArrayList<>(states);
+        list.sort((s1, s2) -> {
+            if (s1.getAcronym().equals("SP")) return -1;
+            if (s2.getAcronym().equals("SP")) return 1;
+            if (s1.getAcronym().equals("RJ")) return -1;
+            if (s2.getAcronym().equals("RJ")) return 1;
+            return s1.getName().compareTo(s2.getName());
+        });
+
+        return list;
     }
 }

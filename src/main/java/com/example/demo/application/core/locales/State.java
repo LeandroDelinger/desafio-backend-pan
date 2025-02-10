@@ -5,6 +5,14 @@ public class State {
     private String acronym;
     private String name;
 
+    public State(int id, String acronym, String name) {
+        this.id = id;
+        this.acronym = acronym;
+        this.name = name;
+    }
+
+    public State() {}
+
     public int getId() {
         return id;
     }

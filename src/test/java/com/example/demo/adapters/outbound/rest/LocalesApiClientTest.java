@@ -11,6 +11,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -19,17 +22,32 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+@SpringBootTest
 @ExtendWith(MockitoExtension.class)
+@TestPropertySource("classpath:application-test.properties")
 class LocalesApiClientTest {
     @Mock
     private RestTemplate restTemplate;
 
     private LocalesApiClient localesApiClient;
 
+    @Value("${api.viacep.url}")
+    private String viaCepUrl;
+
+    @Value("${api.ibge.states.url}")
+    private String ibgeStatesUrl;
+
+    @Value("${api.ibge.municipalities.url}")
+    private String ibgeMunicipalitiesUrl;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
         localesApiClient = new LocalesApiClient(restTemplate);
+
+        localesApiClient.viaCepUrl = viaCepUrl;
+        localesApiClient.ibgeStatesUrl = ibgeStatesUrl;
+        localesApiClient.ibgeMunicipalitiesUrl = ibgeMunicipalitiesUrl;
     }
 
     @Test
@@ -40,7 +58,6 @@ class LocalesApiClientTest {
                 .thenReturn(expectedResponse);
 
         Optional<CepResponseDTO> actualResponse = localesApiClient.getAddress("04856110");
-
         assertTrue(actualResponse.isPresent());
         assertEquals(expectedResponse.getUf(), actualResponse.get().getUf());
 

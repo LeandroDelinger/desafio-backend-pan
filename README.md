@@ -53,6 +53,6 @@ Quando a aplicação estiver rodando, você pode acessar o Swagger UI através d
 Primeiramente, clone o repositório para sua máquina local:
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
+https://github.com/LeandroDelinger/desafio-backend-pan.git
 
 

@@ -22,7 +22,7 @@ public class SearchLocalesAdapter implements SearchLocalesPort {
     private final LocalesApiClient localesApiClient;
 
     @Override
-    public Optional<Cep> searchAdressWithCEP(String cep) {
+    public Optional<Cep> searchAddressWithCEP(String cep) {
         return localesApiClient.getAddress(cep)
                 .filter(cepDTO -> cepDTO.getCep() != null && !cepDTO.getCep().isBlank())
                 .map(cepMapper::DTOtoDomain);

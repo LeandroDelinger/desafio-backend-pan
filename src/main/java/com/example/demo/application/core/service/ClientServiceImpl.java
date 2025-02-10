@@ -1,6 +1,8 @@
 package com.example.demo.application.core.service;
 
+import com.example.demo.adapters.inbound.request.AddressRequestDTO;
 import com.example.demo.adapters.inbound.request.ClientRequestDTO;
+import com.example.demo.application.core.Address.Address;
 import com.example.demo.application.core.client.Client;
 import com.example.demo.application.exceptions.ClientAlreadyExistsException;
 import com.example.demo.application.exceptions.ClientNotFoundException;
@@ -34,5 +36,22 @@ public class ClientServiceImpl implements ClientServicePort {
             throw new ClientAlreadyExistsException("Client with cpf " + client.getCpf() + " already exists");
         });
         return clientRepository.save(client);
+    }
+
+    @Override
+    public void updateAddress(UUID clientId, AddressRequestDTO newAddress) {
+        Client client = this.getClientByID(clientId);
+
+        Address address = new Address();
+        address.setCep(newAddress.getCep());
+        address.setStreet(newAddress.getStreet());
+        address.setNumber(newAddress.getNumber());
+        address.setComplement(newAddress.getComplement());
+        address.setMunicipality(newAddress.getMunicipality());
+        address.setCity(newAddress.getCity());
+        address.setState(newAddress.getState());
+
+        client.setAddress(address);
+        clientRepository.updateAddress(client);
     }
 }

@@ -17,8 +17,8 @@ public class JpaClientEntity {
     private String name;
     private LocalDate dateOfBirth;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "adress_id")
-    private JpaAdressEntity adress;
+    @JoinColumn(name = "address_id")
+    private JpaAddressEntity address;
 
     public UUID getId() {
         return id;
@@ -52,11 +52,11 @@ public class JpaClientEntity {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public JpaAdressEntity getAdress() {
-        return adress;
+    public JpaAddressEntity getAddress() {
+        return address;
     }
 
-    public void setAdress(JpaAdressEntity adress) {
-        this.adress = adress;
+    public void setAddress(JpaAddressEntity address) {
+        this.address = address;
     }
 }

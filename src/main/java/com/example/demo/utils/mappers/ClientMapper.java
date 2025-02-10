@@ -11,16 +11,16 @@ import org.springframework.stereotype.Component;
 @Component
 public interface ClientMapper {
 
-    @Mapping(source = "adress", target = "adress")
+    @Mapping(source = "address", target = "address")
     Client toDomain(JpaClientEntity entity);
 
-    @Mapping(source = "adress", target = "adress")
+    @Mapping(source = "address", target = "address")
     JpaClientEntity toEntity(Client client);
 
     @Mapping(target = "id", ignore = true)
     Client DTOtoDomain(ClientRequestDTO dto);
 
-    @Mapping(source = "adress", target = "adress") // Mapeia o endereço corretamente
+    @Mapping(source = "address", target = "address") // Mapeia o endereço corretamente
     JpaClientEntity DTOtoEntity(ClientRequestDTO dto);
 
 }

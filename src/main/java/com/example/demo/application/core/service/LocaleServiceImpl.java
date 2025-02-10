@@ -20,7 +20,7 @@ public class LocaleServiceImpl implements LocaleServicePort {
 
     @Override
     public Cep getLocaleByCep(String cep) {
-        return searchLocalesPort.searchAdressWithCEP(cep)
+        return searchLocalesPort.searchAddressWithCEP(cep)
                 .filter(this::isValidCep)
                 .orElseThrow(() -> new CepNotFoundException("No locale found with cep " + cep));
     }

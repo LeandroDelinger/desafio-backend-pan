@@ -6,13 +6,13 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@Table(name = "adress")
+@Table(name = "address")
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class JpaAdressEntity {
+public class JpaAddressEntity {
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "increment")

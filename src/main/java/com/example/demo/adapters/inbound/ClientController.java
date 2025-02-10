@@ -7,6 +7,8 @@ import com.example.demo.application.ports.in.ClientServicePort;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
@@ -21,22 +23,22 @@ public class ClientController {
     }
 
     @PostMapping
-    public Client save(@Valid @RequestBody ClientRequestDTO client) {
+    public ResponseEntity<Client> save(@Valid @RequestBody ClientRequestDTO client) {
         log.info("Received request to create client: {}", client);
-        return clientService.save(client);
+        return ResponseEntity.status(HttpStatus.CREATED).body(clientService.save(client));
     }
 
     @GetMapping("/{cpf}")
-    public Client getClientByCPF(@PathVariable String cpf) {
+    public ResponseEntity<Client> getClientByCPF(@PathVariable String cpf) {
         log.info("Received request to get client by CPF: {}", cpf);
-        return clientService.getClientByCPF(cpf);
+        return ResponseEntity.status(HttpStatus.OK).body(clientService.getClientByCPF(cpf));
     }
 
 
     @GetMapping("/id/{id}")
-    public Client getClientByID(@PathVariable UUID id) {
+    public ResponseEntity<Client> getClientByID(@PathVariable UUID id) {
         log.info("Received request to get client by ID: {}", id);
-        return clientService.getClientByID(id);
+        return ResponseEntity.status(HttpStatus.OK).body(clientService.getClientByID(id));
     }
 
     @PutMapping("/{clientId}/address")

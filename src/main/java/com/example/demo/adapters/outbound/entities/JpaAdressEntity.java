@@ -1,6 +1,5 @@
 package com.example.demo.adapters.outbound.entities;
 
-import com.example.demo.application.core.adress.Adress;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

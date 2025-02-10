@@ -1,6 +1,6 @@
 package com.example.demo.application.core.client;
 
-import com.example.demo.application.core.adress.Adress;
+import com.example.demo.application.core.Address.Address;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -10,16 +10,16 @@ public class Client {
     private String cpf;
     private String name;
     private LocalDate dateOfBirth;
-    private Adress adress;
+    private Address address;
 
     public Client() {}
 
-    public Client(UUID id, String cpf, String name, LocalDate dateOfBirth, Adress adress) {
+    public Client(UUID id, String cpf, String name, LocalDate dateOfBirth, Address address) {
         this.id = id;
         this.cpf = cpf;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
-        this.adress = adress;
+        this.address = address;
     }
 
 
@@ -55,11 +55,11 @@ public class Client {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Adress getAdress() {
-        return adress;
+    public Address getAdress() {
+        return address;
     }
 
-    public void setAdress(Adress adress) {
-        this.adress = adress;
+    public void setAdress(Address address) {
+        this.address = address;
     }
 }

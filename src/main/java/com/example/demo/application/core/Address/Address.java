@@ -1,6 +1,6 @@
-package com.example.demo.application.core.adress;
+package com.example.demo.application.core.Address;
 
-public class Adress {
+public class Address {
     private String cep;
     private String street;
     private String number;
@@ -9,9 +9,9 @@ public class Adress {
     private String city;
     private String state;
 
-    public Adress() {}
+    public Address() {}
 
-    public Adress(String cep, String street, String number, String complement, String municipality, String city, String state) {
+    public Address(String cep, String street, String number, String complement, String municipality, String city, String state) {
         this.cep = cep;
         this.street = street;
         this.number = number;

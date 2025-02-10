@@ -16,9 +16,9 @@ public class ClientController {
         this.clientService = clientService;
     }
 
-    @GetMapping("/id/{id}")
-    public Client getClientByCPF(@PathVariable UUID id) {
-        return clientService.getClientByID(id);
+    @PostMapping
+    public Client save(@RequestBody ClientRequestDTO client) {
+        return clientService.save(client);
     }
 
     @GetMapping("/{cpf}")
@@ -26,10 +26,9 @@ public class ClientController {
         return clientService.getClientByCPF(cpf);
     }
 
-    @PostMapping
-    public Client save(@RequestBody ClientRequestDTO client) {
-        return clientService.save(client);
+
+    @GetMapping("/id/{id}")
+    public Client getClientByID(@PathVariable UUID id) {
+        return clientService.getClientByID(id);
     }
-
-
 }

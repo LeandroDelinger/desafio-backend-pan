@@ -1,6 +1,7 @@
 package com.example.demo.application.core.service;
 
 import com.example.demo.application.core.locales.Cep;
+import com.example.demo.application.core.locales.Municipality;
 import com.example.demo.application.core.locales.State;
 import com.example.demo.application.exceptions.CepNotFoundException;
 import com.example.demo.application.ports.in.LocaleServicePort;
@@ -27,6 +28,11 @@ public class LocaleServiceImpl implements LocaleServicePort {
     @Override
     public List<State> getStates() {
         return searchLocalesPort.getStates();
+    }
+
+    @Override
+    public List<Municipality> getMunicipalitiesByStateID(long stateId) {
+        return searchLocalesPort.getMunicipalitiesByStateID(stateId);
     }
 
     private boolean isValidCep(Cep cep) {

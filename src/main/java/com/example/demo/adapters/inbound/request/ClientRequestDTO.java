@@ -19,7 +19,6 @@ public class ClientRequestDTO {
     @Size(min = 11, max = 11, message = "CPF must have 11 characters")
     private String cpf;
 
-    @NotNull(message = "Date of birth is required")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
     @NotNull(message = "Address is required")

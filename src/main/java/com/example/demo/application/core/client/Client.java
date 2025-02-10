@@ -1,6 +1,7 @@
 package com.example.demo.application.core.client;
 
-import com.example.demo.application.core.Address.Address;
+import com.example.demo.application.core.address.Address;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
 import java.util.UUID;

@@ -3,8 +3,10 @@ package com.example.demo.adapters.outbound.rest;
 import com.example.demo.adapters.outbound.dto.CepResponseDTO;
 import com.example.demo.adapters.outbound.dto.MunicipalityFullDTO;
 import com.example.demo.adapters.outbound.dto.StateResponseDTO;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,8 +18,9 @@ public class LocalesApiClient {
     private final RestTemplate restTemplate;
     private static final Logger log = LoggerFactory.getLogger(LocalesApiClient.class);
 
-    public LocalesApiClient() {
-        this.restTemplate = new RestTemplate();
+    @Autowired
+    public LocalesApiClient(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
     }
 
     public Optional<CepResponseDTO> getAddress(String cep) {

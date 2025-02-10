@@ -1,4 +1,4 @@
-package com.example.demo.application.core.Address;
+package com.example.demo.application.core.address;
 
 public class Address {
     private String cep;

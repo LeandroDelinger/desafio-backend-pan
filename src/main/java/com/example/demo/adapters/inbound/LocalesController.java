@@ -1,6 +1,7 @@
 package com.example.demo.adapters.inbound;
 
 import com.example.demo.application.core.locales.Cep;
+import com.example.demo.application.core.locales.Municipality;
 import com.example.demo.application.core.locales.State;
 import com.example.demo.application.ports.in.LocaleServicePort;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,5 +28,10 @@ public class LocalesController {
     @GetMapping("/states")
     public List<State> getStates() {
         return localeServicePort.getStates();
+    }
+
+    @GetMapping("/municipalities/{stateId}")
+    public List<Municipality> getMunicipalitiesByStateID(@PathVariable long stateId) {
+        return localeServicePort.getMunicipalitiesByStateID(stateId);
     }
 }

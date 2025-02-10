@@ -1,6 +1,7 @@
 package com.example.demo.adapters.outbound.rest;
 
 import com.example.demo.adapters.outbound.dto.CepResponseDTO;
+import com.example.demo.adapters.outbound.dto.MunicipalityFullDTO;
 import com.example.demo.adapters.outbound.dto.StateResponseDTO;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -24,6 +25,12 @@ public class LocalesApiClient {
     public List<StateResponseDTO> getStates() {
         String url = "https://servicodados.ibge.gov.br/api/v1/localidades/estados/";
         StateResponseDTO[] response = restTemplate.getForObject(url, StateResponseDTO[].class);
+        return List.of(response);
+    }
+
+    public List<MunicipalityFullDTO> getMunicipalitiesByStateID(long stateId) {
+        String url =  String.format("https://servicodados.ibge.gov.br/api/v1/localidades/estados/%d/municipios", stateId);
+        MunicipalityFullDTO[] response = restTemplate.getForObject(url, MunicipalityFullDTO[].class);
         return List.of(response);
     }
 }
